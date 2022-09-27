@@ -1,0 +1,107 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+nav{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    margin: auto;
+    justify-content: space-around;
+    background-color: greenyellow;
+    color: black;
+}
+nav>a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}
+.home{
+    max-width: 800px;
+        margin: auto;
+}
+.movies-list{
+    max-width: 800px;
+    margin: auto;
+}
+.movie{
+    margin: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie button{
+    font-size: 45px;
+    background-color: transparent;
+    border: none;
+}
+.movie button:active{
+    transform: scale(1.2);
+    transition: 0.2s;
+}
+
+
+.movie:hover{
+    transform: scale(1.05);
+    box-shadow: 5px 5px 5px black;
+    transition: 0.3s;
+}
+.loader{
+    width: 100px;
+    height: 100px;
+    border-top: solid 2px red;
+    border-right: solid 2px red;
+    border-radius: 50%;
+    animation-name: loader;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes loader {
+    
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
+.movie-details{
+    max-width: 800px;
+    margin: auto;
+}
+.movie-details div button{
+    padding: 10px;
+    font-size: 18px;
+    
+}
+
+
+.add{
+    max-width: 800px;
+    margin: auto;
+    height: 200vh;
+}
+.add form{
+    display: grid;
+    grid-template-columns:200px 300px ;
+    row-gap: 15px;
+    padding: 10px;
+    border:  solid 2px black;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.add form label{
+    font-size: 20px;
+}
+.add form input{
+    font-size: 20px;
+    height: 30px;
+    width: 300px;
+    border-radius: 5px;
+}
