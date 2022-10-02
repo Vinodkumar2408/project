@@ -1,32 +1,36 @@
-
-import { useEffect } from 'react';
-import Movieslist from './Movieslist';
-import useFetch from './useFetch';
+import { useEffect, useState } from "react";
+import Articleslist from "./Articleslist";
 
 const Home = () => {
 
-  useEffect(()=>{
-    if( localStorage.getItem("wishList")== null)
-    {
-        localStorage.setItem("wishList" , "[]" );
-    }
-
-  } , [] )
+    const [articles, setarticles] = useState(null);
 
 
-  
-    let {data : movies  , pending , error} = useFetch("http://localhost:4000/movies");
+    useEffect(()=>{
+        if(localStorage.getItem("articles") == null)
+        {
+            localStorage.setItem("articles" , "[]" );
+            console.log("creayted");
+        }
+        else
+        {
+            let a = localStorage.getItem("articles");
+            a = JSON.parse(a);
+            setarticles(a);
+        }
+    } , [] )
+
+
 
     return ( 
-      <div className='home'>
-        
-        {error && <h1> { error } </h1>}
-        
-        {pending && <div className='loader'></div> }
-            
-      { movies && <Movieslist movies={movies} title="All the movies"/>}
-  
-      </div>
+        <div>
+            <h1> List of all Articles </h1>
+            <hr />
+
+            <Articleslist articles={articles}/>
+
+
+        </div>
     );
 }
 export default Home;

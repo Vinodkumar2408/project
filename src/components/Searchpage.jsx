@@ -1,25 +1,24 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Movieslist from "./Movieslist";
-import useFetch from "./useFetch";
+import Articleslist from "./Articleslist";
 
 const Searchpage = () => {
-
+    const [articles, setArticles] = useState(null);
     let {searchVal} = useParams();
-    let {data : movies  , pending , error} = useFetch("http://localhost:4000/movies");
+    console.log(searchVal);
 
+    useEffect(()=>{
+            let a = localStorage.getItem("articles");
+            a = JSON.parse(a);
+            setArticles(a);
+    } , [] )
+    
     return ( 
         <div>
-            <h1>This is a search page of { searchVal} </h1>
-            {
-                movies && <Movieslist 
-                movies={movies.filter((movie)=>{ return(movie.movieName.toLowerCase().includes(searchVal.toLowerCase())) || 
-                                                        (movie.hero.toLowerCase().includes(searchVal.toLowerCase())) || 
-                                                        (movie.genere.toLowerCase().includes(searchVal.toLowerCase()))
-                })} 
-                title="search result" />
-            }
-
+            <h1>hello</h1>
+        {articles && <Articleslist articles={articles.filter((article)=>{ return article.title.includes(searchVal)})} />}
         </div>
+
     );
 }
 export default Searchpage;
